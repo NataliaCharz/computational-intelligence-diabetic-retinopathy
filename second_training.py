@@ -10,7 +10,7 @@ model = models.resnet18(pretrained=False)
 model.fc = nn.Linear(model.fc.in_features, 5)
 # wczytanie wcześniej wytrenowanego modelu
 model.load_state_dict(
-    torch.load("ddr_model_cpu2.pth")
+    torch.load("ddr_model_cpu.pth")
 )
 device = torch.device("cpu")
 model = model.to(device)
@@ -74,7 +74,7 @@ for epoch in range(epochs):
     print(f"Validation Accuracy: {val_accuracy:.2f}%")
 torch.save(
     model.state_dict(),
-    "ddr_model_cpu3.pth"
+    "ddr_model_cpu.pth"
 )
 # loss
 plt.plot(train_losses, label="Train Loss")
